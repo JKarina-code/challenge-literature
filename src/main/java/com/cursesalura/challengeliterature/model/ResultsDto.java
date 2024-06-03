@@ -1,12 +1,12 @@
 package com.cursesalura.challengeliterature.model;
 
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record AuthorData(
-        String name,
-        Integer birth_year,
-        Integer death_year
+public record ResultsDto(
+        @JsonAlias("results") List<BookDto> results
 ) {
 }
