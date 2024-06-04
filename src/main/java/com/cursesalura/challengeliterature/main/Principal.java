@@ -34,6 +34,7 @@ public class Principal {
                     case 2 -> listRegisteredBooks();
                     case 3 -> listRegisteredAuthors();
                     case 4 -> listAuthorAliveYear();
+                    case 5 -> listBooksByLanguage();
                     case 0 -> {
                         exit = true;
                         System.out.println("Closing the application...");
@@ -87,7 +88,6 @@ public class Principal {
         return books;
     }
 
-
     //Book search by title
     private Optional<Book> getBookDataByTitle() {
         String titleBook = getDataUser();
@@ -135,6 +135,23 @@ public class Principal {
         } else {
             authors.forEach(System.out::println);
         }
+    }
+
+    private void listBooksByLanguage() {
+        String languagesOptions = """
+                Choose an option  for the language you want to search for:
+                     en - English
+                     es - Spanish
+                     fr - French
+                     it - Italian
+                     pt - Portuguese
+                """;
+        System.out.println(languagesOptions);
+        String text = scanner.nextLine();
+        var language = Languages.fromString(text);
+        List<Book> books = repository.findByLanguages(language);
+        books.stream()
+                .forEach(System.out::println);
     }
 }
 
