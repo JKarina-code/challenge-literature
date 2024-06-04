@@ -8,7 +8,7 @@ import java.util.*;
 public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Query("SELECT a FROM Book b JOIN b.authors a")
-    List<Author> getAuthorsInfo ();
+    List<Author> getAuthors ();
 
     @Query("SELECT a FROM Book b JOIN b.authors a WHERE birthYear > :date")
     List<Author> getAuthorLiveAfter ( Integer date );

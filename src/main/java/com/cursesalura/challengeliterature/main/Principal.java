@@ -32,6 +32,7 @@ public class Principal {
                 switch (option) {
                     case 1 -> getBookDataByTitle();
                     case 2 -> listRegisteredBooks();
+                    case 3 -> listRegisteredAuthors();
                     case 0 -> {
                         exit = true;
                         System.out.println("Closing the application...");
@@ -106,6 +107,14 @@ public class Principal {
         books.stream().sorted(Comparator.comparing(Book::getTitle)).forEach(System.out::println);
     }
 
+    private void listRegisteredAuthors() {
+
+        List<Author> authors = repository.getAuthors();
+        authors.stream()
+                .sorted(Comparator.comparing(Author::getName))
+                .forEach(System.out::println);
+
+    }
 }
 
 
