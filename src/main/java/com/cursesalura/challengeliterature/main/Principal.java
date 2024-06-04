@@ -33,6 +33,7 @@ public class Principal {
                     case 1 -> getBookDataByTitle();
                     case 2 -> listRegisteredBooks();
                     case 3 -> listRegisteredAuthors();
+                    case 4 -> listAuthorAliveYear();
                     case 0 -> {
                         exit = true;
                         System.out.println("Closing the application...");
@@ -114,6 +115,26 @@ public class Principal {
                 .sorted(Comparator.comparing(Author::getName))
                 .forEach(System.out::println);
 
+    }
+
+
+    private void listAuthorAliveYear() {
+        Integer year = null;
+        while (year == null) {
+            System.out.println("Add a year:");
+            try {
+                year = Integer.valueOf(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Only digits are allowed");
+            }
+        }
+
+        List<Author> authors = repository.getAuthorAliveYear(year);
+        if (authors.isEmpty()) {
+            System.out.println("Not found result");
+        } else {
+            authors.forEach(System.out::println);
+        }
     }
 }
 
