@@ -5,7 +5,6 @@ import com.cursesalura.challengeliterature.model.*;
 import com.cursesalura.challengeliterature.entity.*;
 import com.cursesalura.challengeliterature.repository.*;
 
-
 import java.util.*;
 
 public class Principal {
@@ -32,7 +31,7 @@ public class Principal {
                 scanner.nextLine();
                 switch (option) {
                     case 1 -> getBookDataByTitle();
-                    //case 2 -> listRegisteredBooks();
+                    case 2 -> listRegisteredBooks();
                     case 0 -> {
                         exit = true;
                         System.out.println("Closing the application...");
@@ -70,12 +69,14 @@ public class Principal {
         return nameBook;
 
     }
+
     private ResultsDto getDataApi(String titleBook) {
         var json = apiConsumption.getData(URL_BASE + "?search=%20" + titleBook.replace(" ", "+"));
         var data = convert.getData(json, ResultsDto.class);
         return data;
 
     }
+
     private Optional<Book> getInfomation(ResultsDto bookData, String titleBook) {
         Optional<Book> books = bookData.results().stream()
                 .filter(l -> l.title().toLowerCase().contains(titleBook.toLowerCase()))
@@ -99,6 +100,12 @@ public class Principal {
         }
         return book;
     }
+
+    private void listRegisteredBooks() {
+        books = repository.findAll();
+        books.stream().sorted(Comparator.comparing(Book::getTitle)).forEach(System.out::println);
+    }
+
 }
 
 

@@ -1,6 +1,5 @@
 package com.cursesalura.challengeliterature.entity;
 
-import com.cursesalura.challengeliterature.model.AuthorDto;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,7 +15,10 @@ public class Author {
     @ManyToOne
     private Book book;
 
-    public Author( Author author) {
+    public Author() {
+    }
+
+    public Author(Author author) {
     }
 
     public Author(String name, Integer birthYear, Integer deathYear, Book book) {
@@ -57,11 +59,12 @@ public class Author {
     public void setDeathYear(Integer deathYear) {
         this.deathYear = deathYear;
     }
-    public Book getBook () {
+
+    public Book getBook() {
         return book;
     }
 
-    public void setBook ( Book book ) {
+    public void setBook(Book book) {
         this.book = book;
     }
 

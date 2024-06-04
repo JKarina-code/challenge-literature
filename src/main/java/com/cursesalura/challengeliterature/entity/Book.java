@@ -1,9 +1,7 @@
 package com.cursesalura.challengeliterature.entity;
 
 import jakarta.persistence.*;
-
 import java.util.*;
-
 import com.cursesalura.challengeliterature.model.*;
 
 @Entity
@@ -21,6 +19,9 @@ public class Book {
     @Enumerated(EnumType.STRING)
     private Languages languages;
     private Double downloads;
+
+    public Book() {
+    }
 
     public Book(List<BookDto> results) {
     }
@@ -82,7 +83,7 @@ public class Book {
     public String toString() {
         return "------ Book ------"
                 + "\n" + "Títle: " + title + "\n"
-                + "Author: " + authors + "\n" +"Languages=" + languages + "\n"
+                + "Author: " + authors + "\n" + "Languages=" + languages + "\n"
                 + "Downloads Number: " + downloads + "\n" + "-------------------";
     }
 }
