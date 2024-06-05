@@ -109,12 +109,10 @@ public class Principal {
     }
 
     private void listRegisteredAuthors() {
-
         List<Author> authors = repository.getAuthors();
         authors.stream()
                 .sorted(Comparator.comparing(Author::getName))
                 .forEach(System.out::println);
-
     }
 
 

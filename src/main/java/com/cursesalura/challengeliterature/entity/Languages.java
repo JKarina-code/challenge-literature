@@ -7,15 +7,15 @@ public enum Languages {
     ITALIAN("it"),
     PORTUGUESE("pt");
 
-    private String languagesAlura;
+    private String languagesBooks;
 
-    Languages(String languagesAlura) {
-        this.languagesAlura = languagesAlura;
+    Languages(String languagesBooks) {
+        this.languagesBooks = languagesBooks;
     }
 
     public static Languages fromString(String text) {
         for (Languages categoria : Languages.values())
-            if (categoria.languagesAlura.equalsIgnoreCase(text)) {
+            if (categoria.languagesBooks.equalsIgnoreCase(text)) {
                 return categoria;
             }
         throw new IllegalArgumentException("Not category found: " + text);

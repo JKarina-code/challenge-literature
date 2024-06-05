@@ -1,7 +1,9 @@
 package com.cursesalura.challengeliterature.entity;
 
 import jakarta.persistence.*;
+
 import java.util.*;
+
 import com.cursesalura.challengeliterature.model.*;
 
 @Entity
